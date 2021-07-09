@@ -1,3 +1,4 @@
 .Store{
     min-height: calc(100vh - 64px - 70px);
+    position: relative;
 }
