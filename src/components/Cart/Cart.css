@@ -1,0 +1,7 @@
+.Cart{
+    position: fixed;
+    right: 50px;
+    top: 70px;
+    padding: 5px;
+    line-height: 10px;
+}

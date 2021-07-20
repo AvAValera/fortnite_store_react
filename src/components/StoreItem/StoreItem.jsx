@@ -1,11 +1,11 @@
 import React from "react";
 import "./StoreItem.css";
 export default function StoreItem(props) {
-    const { displayName, displayDescription, offerId, price, displayAssets } =
+    const { displayName, displayDescription, offerId, price, displayAssets, addInCart } =
         props;
 
     return (
-        <div className="card">
+        <div className="card" id={offerId}>
             <div className="card-image">
                 <img src={displayAssets[0].full_background} alt="img" />
             </div>
@@ -15,7 +15,7 @@ export default function StoreItem(props) {
             </div>
             <div className="card-action">
                 <p className="right price" style={{fontSize: '1.8rem'}}>{price.finalPrice} Coin</p>
-                <button className='waves-effect waves-light left btn'>Купить</button>
+                <button onClick={() => addInCart(displayName)} className='waves-effect waves-light left btn'>Купить</button>
             </div>
         </div>
     );
