@@ -1,9 +1,9 @@
 import React from "react";
 import "./StoreItem.css";
 export default function StoreItem(props) {
-    const { displayName, displayDescription, offerId, price, displayAssets, addInCart } =
+    const { displayName, displayDescription, offerId, price, displayAssets, addInCart = Function.prototype } =
         props;
-
+    const finPrice = price.finalPrice
     return (
         <div className="card" id={offerId}>
             <div className="card-image">
@@ -14,8 +14,8 @@ export default function StoreItem(props) {
                 <p>{displayDescription}</p>
             </div>
             <div className="card-action">
-                <p className="right price" style={{fontSize: '1.8rem'}}>{price.finalPrice} Coin</p>
-                <button onClick={() => addInCart(displayName)} className='waves-effect waves-light left btn'>Купить</button>
+                <button onClick={() => addInCart({offerId, displayName, finPrice})} className='waves-effect waves-light left btn'>Купить</button>
+                <p className="right price" style={{fontSize: '1.8rem'}}>{finPrice} Coin</p>
             </div>
         </div>
     );

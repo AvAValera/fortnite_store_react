@@ -9,3 +9,9 @@
 .price{
     line-height: 0px;
 }
+.card-action{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
