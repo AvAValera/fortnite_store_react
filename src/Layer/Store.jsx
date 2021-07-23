@@ -52,7 +52,40 @@ export default function Store() {
     function showCartList(){
         setCartList(!isCartList)
     }
-
+    function delCartItem(itemId){
+        const newOrderList = order.filter(el => el.offerId !== itemId);
+        setOrder(newOrderList);
+    }
+    function addQuantity(itemId){
+        const newQuantity = order.map(el => {
+            if(el.offerId === itemId){
+                const newOrder = {
+                    ...el,
+                    quantity: el.quantity + 1
+                }
+                return newOrder;
+            }
+            else{
+                return el;
+            }
+        })
+        setOrder(newQuantity)
+    }
+    function removeQuantity(itemId){
+        const newQuantity = order.map(el => {
+            if(el.offerId === itemId){
+                const newOrder = {
+                    ...el,
+                    quantity: el.quantity <= 0 ? 0 : el.quantity - 1
+                }
+                return newOrder;
+            }
+            else{
+                return el;
+            }
+        })
+        setOrder(newQuantity)
+    }
     return (
         <main className="Store">
             <Cart quantity={order.length} showCartList={showCartList}/>
@@ -61,7 +94,13 @@ export default function Store() {
             ) : (
                 <StoreList data={dataItems} addInCart={addInCart} />
             )}
-            {isCartList ? <CartList order={order} showCartList={showCartList} /> : null}
+            {isCartList ? <CartList 
+                order={order} 
+                showCartList={showCartList} 
+                delCartItem={delCartItem}
+                addQuantity={addQuantity}
+                removeQuantity={removeQuantity}
+                /> : null}
         </main>
     );
 }
