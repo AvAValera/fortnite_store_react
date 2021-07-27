@@ -86,6 +86,9 @@ export default function Store() {
         })
         setOrder(newQuantity)
     }
+    function clearCart(){
+        setOrder([])
+    }
     return (
         <main className="Store">
             <Cart quantity={order.length} showCartList={showCartList}/>
@@ -100,6 +103,7 @@ export default function Store() {
                 delCartItem={delCartItem}
                 addQuantity={addQuantity}
                 removeQuantity={removeQuantity}
+                clearCart={clearCart}
                 /> : null}
         </main>
     );
